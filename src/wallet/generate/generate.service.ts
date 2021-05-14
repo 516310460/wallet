@@ -40,7 +40,7 @@ export class GenerateService {
     const wallet = new Wallet({
       protocol: 'http',
       hostname: 'localhost',
-      port: 9256
+      port: 8555
     });
   
     let address = await wallet.getNextAddress(userDto.id);
