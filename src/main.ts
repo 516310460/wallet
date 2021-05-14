@@ -8,7 +8,9 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 
 import { logger } from './common/middleware/logger.middleware';
 
-const port = 8080
+// const port = 8080
+const host = '0.0.0.0'
+const port = 9911
 
 async function bootstrap() {
   // Logger.log('--------- 服务启动 -------------')
@@ -49,7 +51,7 @@ async function bootstrap() {
     }),
   )
 
-  await app.listen(port);
+  await app.listen(port, host);
 
   Logger.log(`http://localhost:${port}`, '服务启动成功')
 }
