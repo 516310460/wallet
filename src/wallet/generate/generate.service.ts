@@ -36,16 +36,21 @@ export class GenerateService {
     ]
   }
 
-  async getXCHAccount(userDto: UserDto): Promise<string>{
-    const wallet = new Wallet({
+  async getXCHAccount(userDto: UserDto){
+    const fullNode = new FullNode({
       protocol: 'http',
       hostname: 'localhost',
-      port: 8555
+      port: 8555,
+      certPath: userDto.crt,
+      keyPath: userDto.key,
     });
-  
-    let address = await wallet.getNextAddress(userDto.id);
 
-    return address
+    const chainState = await fullNode.getBlockchainState();
+    console.log(chainState)
+  
+    // let address = await fullNode.getNextAddress(userDto.id);
+
+    // return address
   }
 
 
