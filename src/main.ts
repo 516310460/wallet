@@ -34,7 +34,7 @@ async function bootstrap() {
   app.setGlobalPrefix('/api')
 
   // 接口文档 swagger 参数
-  const options = new DocumentBuilder().setTitle('钱包管理').setDescription(`http://localhost:${port}/api-json`).setVersion('1.0.0').addBearerAuth().build()
+  const options = new DocumentBuilder().setTitle('钱包管理').setDescription(`http://${host}:${port}/api-json`).setVersion('1.0.0').addBearerAuth().build()
   const document = SwaggerModule.createDocument(app, options)
   // 设置 swagger 网址
   SwaggerModule.setup('/api', app, document)
@@ -53,6 +53,6 @@ async function bootstrap() {
 
   await app.listen(port, host);
 
-  Logger.log(`http://localhost:${port}`, '服务启动成功')
+  Logger.log(`http://${host}:${port}`, '服务启动成功')
 }
 bootstrap();
