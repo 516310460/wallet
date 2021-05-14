@@ -8,20 +8,20 @@ import { AccountModule } from './wallet/account/account.module'
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (config: ConfigService) => ({
-        type: 'mysql',
-        host: 'localhost',
-        port: 3306,
-        username: 'root',
-        password: 'a2221517',
-        database: 'wallet',
-        entities: ['dist/**/*.entity{.ts,.js}'],
-        synchronize: true,
-      }),
-      inject: [ConfigService]
-    }),
+    // TypeOrmModule.forRootAsync({
+    //   imports: [ConfigModule],
+    //   useFactory: async (config: ConfigService) => ({
+    //     type: 'mysql',
+    //     host: 'localhost',
+    //     port: 3306,
+    //     username: 'root',
+    //     password: 'a2221517',
+    //     database: 'wallet',
+    //     entities: ['dist/**/*.entity{.ts,.js}'],
+    //     synchronize: true,
+    //   }),
+    //   inject: [ConfigService]
+    // }),
     GenerateModule,
     AccountModule
   ],
