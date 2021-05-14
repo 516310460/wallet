@@ -42,6 +42,14 @@ export class GenerateController {
     name: 'id',
     description: '钱包id',
   })
+  @ApiQuery({
+    name: 'crt',
+    description: '全节点 private_full_node.crt',
+  })
+  @ApiQuery({
+    name: 'key',
+    description: '全节点 private_full_node.key',
+  })
   @ApiCreatedResponse({ //编写响应的api注解
     status:200,
     description: '响应数据格式',
