@@ -38,7 +38,6 @@ export class GenerateService {
 
   async getXCHAccount(userDto: UserDto){
     const wallet = new Wallet({
-      protocol: "https",
       hostname: "127.0.0.1",
       port: 9256,
       certPath: "/home/xch/private_wallet.crt",
