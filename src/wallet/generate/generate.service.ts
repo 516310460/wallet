@@ -38,8 +38,8 @@ export class GenerateService {
 
   async getXCHAccount(userDto: UserDto){
     const wallet = new Wallet({
-      hostname: "127.0.0.1",
-      port: 9256,
+      // hostname: "localhost",
+      // port: 9256,
       certPath: "/home/xch/private_wallet.crt",
       keyPath: "/home/xch/private_wallet.key",
       // certPath: "-----BEGIN CERTIFICATE-----\nMIIDLDCCAhSgAwIBAgIUFtvBuCb/Bt/sD1lUv2LVyP7YDagwDQYJKoZIhvcNAQEL\nBQAwRDENMAsGA1UECgwEQ2hpYTEQMA4GA1UEAwwHQ2hpYSBDQTEhMB8GA1UECwwY\nT3JnYW5pYyBGYXJtaW5nIERpdmlzaW9uMCAXDTIxMDUxMTEwMTMzOVoYDzIxMDAw\nODAyMDAwMDAwWjBBMQ0wCwYDVQQDDARDaGlhMQ0wCwYDVQQKDARDaGlhMSEwHwYD\nVQQLDBhPcmdhbmljIEZhcm1pbmcgRGl2aXNpb24wggEiMA0GCSqGSIb3DQEBAQUA\nA4IBDwAwggEKAoIBAQDQxZMbPffpMJNme/dvzm/pSGIETlssIHIY1iXvv5Q0xrp2\nfzzEk/UPxfO4EU9Ui6fQof2GKbjZX1uygNbMMBVOagi7oNe3YVIT6engDsxLG2gT\nJNGubbGN6WlskHdPP1Ekn9EtN9txxr2/9xaIkKdLAfl+xwEiU95jSCHn4gVsoaos\nG8OEHkOjIn7CvrDa8139m7szxr9DG8zo2nvBQ8g24sXxFJL3YVORRxJ3aE4i6OhP\nXbPtlU7MVAGjWaHZn7W6nNfyBwuqgc+dsYlY4x6xkb5Wv1tZQAvE5UJLzID15P0P\n6mU0oe9MizjxRKr+RyPX25wk57bkPCIxGNYHbeQhAgMBAAGjFzAVMBMGA1UdEQQM\nMAqCCGNoaWEubmV0MA0GCSqGSIb3DQEBCwUAA4IBAQAnYEQqSvdDFGEB6vJmyoNN\nM5qEnUpvL7wAESXSUQH+DufxgSmP9lP5v3JMJb+OcA2YG6GjgQ/ux5BlTM+2ma1b\n7Q6vH0FRhiPeLsOA6/MrRpa5hPNGgNj2yyrpceqV0vkTnrVcrPUfdxPFnBA69BWy\niw5jyJIksOpjuynvRCSx1EcuwOoYcgmKaexCi+gHfq+DWMhv9xRzSf25LvtxAzFW\n+sl/61v3bhsrYC3OLE3YpHQXThWJmS+dBXekCqUNQxUWqb07v+lRueuSemQocPWQ\nJIJg/CtRpxTKhDSiEZ66UQ7PMeJxXnsv1+At9G45ZFiNLOwcCN8bRtv21sP4TUAY\n-----END CERTIFICATE-----",
