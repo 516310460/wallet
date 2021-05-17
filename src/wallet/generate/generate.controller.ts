@@ -67,7 +67,7 @@ export class GenerateController {
     description: '响应数据格式',
     type: XCHAddress,
   })
-  async getXCHAccount(@Body() userDto: UserDto, @Res() res: Response) {
+  async getXCHAccount(@Query() userDto: UserDto, @Res() res: Response) {
     let AllAccount = await this.generate.getXCHAccount(userDto)
     res.status(HttpStatus.OK).json(AllAccount);
   }
