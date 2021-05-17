@@ -9,7 +9,7 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { logger } from './common/middleware/logger.middleware';
 
 // const port = 8080
-const host = '0.0.0.0'
+const host = 'localhost' || '0.0.0.0'
 const port = 9911
 
 async function bootstrap() {
