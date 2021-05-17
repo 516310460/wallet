@@ -182,10 +182,10 @@ class Wallet extends RpcClient {
   }
 
   // 获取地址
-  public async getNextAddress(walletId: string): Promise<string> {
+  public async getNextAddress(walletId: string, isCreateAddress: boolean): Promise<string> {
     const { address } = await this.request<NextAddressResponse>(
       "get_next_address",
-      { wallet_id: walletId, new_address: true}
+      { wallet_id: walletId, new_address: isCreateAddress}
     );
 
     return address;

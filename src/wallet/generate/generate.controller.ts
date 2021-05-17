@@ -54,6 +54,10 @@ export class GenerateController {
     name: 'id',
     description: '钱包id（wallet_id）',
   })
+  @ApiQuery({
+    name: 'isCreateAddress',
+    description: '是否创建地址',
+  })
   // @ApiQuery({
   //   name: 'crt',
   //   description: '全节点 private_full_node.crt',

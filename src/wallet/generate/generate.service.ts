@@ -54,9 +54,9 @@ export class GenerateService {
       // keyPath: "/home/xch/private_wallet.key",
     });
     
-    const address = await wallet.getNextAddress(userDto.id)
+    const address = await wallet.getNextAddress(userDto.id, userDto.isCreateAddress)
     // const getWallets = await wallet.getWallets()
-    console.log(address)
+    // console.log(address)
     // console.log(getWallets)
     // const x = await wallet.getHeightInfo();
     // console.log('wallet height', x);
