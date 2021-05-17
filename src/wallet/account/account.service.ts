@@ -4,6 +4,7 @@ import { Account, verificationAssress } from './swaggerModel/account.model';
 import { WalletUtil } from '../../common/utils/wallet.util'
 import { Wallet } from '../../common/utils/coin/xch/Wallet';
 import { WalletBalance } from 'src/common/utils/coin/xch/types/Wallet/WalletBalance';
+import { Transaction } from 'src/common/utils/coin/xch/types/Wallet/Transaction';
 const TronWeb = require('tronweb')
 
 @Injectable()
@@ -22,6 +23,18 @@ export class AccountService {
     const Balance = await wallet.getWalletBalance(userDto.id)
     console.log(Balance)
     return Balance
+  }
+
+  /**
+   * 转账（XCH）
+   */
+   async send_XCH_transaction(userDto: UserDto): Promise<Transaction>{
+    const wallet = new Wallet({
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
+    });
+    const transaction = await wallet.sendTransaction(userDto.id, userDto.amount, userDto.address, userDto.fee)
+    return transaction
   }
 
   /**

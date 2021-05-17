@@ -8,6 +8,11 @@ export interface UserDto {
   // 币种地址
   address: string;
 
+
+  // XCH
+  amount: number;
+  fee: number;
+
 }
 
 export interface VerifyAddressDto {

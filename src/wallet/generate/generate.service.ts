@@ -48,22 +48,20 @@ export class GenerateService {
     return generateMnemonic
   }
 
-  async getXCHAccount(userDto: UserDto){
+  async getXCHAccount(userDto: UserDto): Promise<string>{
     const wallet = new Wallet({
       certPath: "/home/xch/private_wallet.crt",
       keyPath: "/home/xch/private_wallet.key",
     });
     
     const address = await wallet.getNextAddress(userDto.id)
-    const getWallets = await wallet.getWallets()
+    // const getWallets = await wallet.getWallets()
     console.log(address)
-    console.log(getWallets)
-    const x = await wallet.getHeightInfo();
-    console.log('wallet height', x);
+    // console.log(getWallets)
+    // const x = await wallet.getHeightInfo();
+    // console.log('wallet height', x);
   
-    return {
-      address: address
-    }
+    return address
   }
 
 

@@ -9,7 +9,7 @@ import { VerifyAddress } from "src/common/utils/verify/address.verify";
 // import { Cat } from './Interfaces/cat.interfaces';
 
 @Controller('account')
-@ApiTags('地址关联信息')
+@ApiTags('账户')
 export class AccountController {
   constructor(private readonly account: AccountService) {}
 
@@ -81,6 +81,35 @@ export class AccountController {
   async verificationAssress(@Query() verifyAddressDto: VerifyAddressDto, @Res() res: Response) {
     let isAddress = await new VerifyAddress().isCoinTypeAddress(verifyAddressDto)
     res.status(HttpStatus.OK).json(isAddress);
+  }
+
+
+  @Post("/send_XCH_transaction")
+  @ApiOperation({ summary: '转账（XCH）' })
+  @ApiQuery({
+    name: 'id',
+    description: '钱包id（wallet_id）',
+  })
+  @ApiQuery({
+    name: 'amount',
+    description: '数量',
+  })
+  @ApiQuery({
+    name: 'address',
+    description: '地址',
+  })
+  @ApiQuery({
+    name: 'fee',
+    description: '手续费',
+  })
+  // @ApiCreatedResponse({ //编写响应的api注解
+  //   status:200,
+  //   description: '响应数据格式',
+  //   type: Account,
+  // })
+  async send_XCH_transaction(@Query() userDto: UserDto, @Res() res: Response) {
+    let AllAccount = await this.account.send_XCH_transaction(userDto)
+    res.status(HttpStatus.OK).json(AllAccount);
   }
 
 }
