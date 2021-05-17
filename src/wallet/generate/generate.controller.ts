@@ -38,10 +38,10 @@ export class GenerateController {
 
   @Post("/getXCHAddress")
   @ApiOperation({ summary: '生成/获取地址（XCH）' })
-  // @ApiQuery({
-  //   name: 'id',
-  //   description: '钱包id',
-  // })
+  @ApiQuery({
+    name: 'id',
+    description: '钱包id（wallet_id）',
+  })
   // @ApiQuery({
   //   name: 'crt',
   //   description: '全节点 private_full_node.crt',

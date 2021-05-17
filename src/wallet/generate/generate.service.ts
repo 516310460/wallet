@@ -46,7 +46,7 @@ export class GenerateService {
     console.log("助记词地址生成", generateMnemonic)
     wallet.addKey(generateMnemonic)
     console.log("添加助记词成功")
-    const address = await wallet.getNextAddress("1")
+    const address = await wallet.getNextAddress(userDto.id)
     const getWallets = await wallet.getWallets()
     console.log(address)
     console.log(getWallets)

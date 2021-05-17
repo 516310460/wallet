@@ -19,11 +19,11 @@ export class AccountController {
     name: 'id',
     description: '钱包id（wallet_id）',
   })
-  @ApiCreatedResponse({ //编写响应的api注解
-    status:200,
-    description: '响应数据格式',
-    type: Account,
-  })
+  // @ApiCreatedResponse({ //编写响应的api注解
+  //   status:200,
+  //   description: '响应数据格式',
+  //   type: Account,
+  // })
   async getXCHBalance(@Query() userDto: UserDto, @Res() res: Response) {
     let AllAccount = await this.account.getXCHBalance(userDto)
     res.status(HttpStatus.OK).json(AllAccount);
