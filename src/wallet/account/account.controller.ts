@@ -112,4 +112,18 @@ export class AccountController {
     res.status(HttpStatus.OK).json(AllAccount);
   }
 
+  @Get("/get_XCH_Wallets")
+  @ApiOperation({ summary: '获取所有钱包列表及信息（XCH）' })
+  async get_XCH_Wallets(@Query() userDto: UserDto, @Res() res: Response) {
+    let AllAccount = await this.account.get_XCH_Wallets(userDto)
+    res.status(HttpStatus.OK).json(AllAccount);
+  }
+  
+  @Get("/get_XCH_Transactions")
+  @ApiOperation({ summary: '获取交易记录（XCH）' })
+  async get_XCH_Transactions(@Query() userDto: UserDto, @Res() res: Response) {
+    let AllAccount = await this.account.get_XCH_Transactions(userDto)
+    res.status(HttpStatus.OK).json(AllAccount);
+  }
+
 }

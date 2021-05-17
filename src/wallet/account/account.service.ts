@@ -5,6 +5,7 @@ import { WalletUtil } from '../../common/utils/wallet.util'
 import { Wallet } from '../../common/utils/coin/xch/Wallet';
 import { WalletBalance } from 'src/common/utils/coin/xch/types/Wallet/WalletBalance';
 import { Transaction } from 'src/common/utils/coin/xch/types/Wallet/Transaction';
+import { WalletInfo } from 'src/common/utils/coin/xch/types/Wallet/WalletInfo';
 const TronWeb = require('tronweb')
 
 @Injectable()
@@ -17,8 +18,8 @@ export class AccountService {
    */
   async getXCHBalance(userDto: UserDto): Promise<WalletBalance>{
     const wallet = new Wallet({
-      certPath: "/home/xch/private_wallet.crt",
-      keyPath: "/home/xch/private_wallet.key",
+      // certPath: "/home/xch/private_wallet.crt",
+      // keyPath: "/home/xch/private_wallet.key",
     });
     const Balance = await wallet.getWalletBalance(userDto.id)
     console.log(Balance)
@@ -30,11 +31,30 @@ export class AccountService {
    */
    async send_XCH_transaction(userDto: UserDto): Promise<Transaction>{
     const wallet = new Wallet({
-      certPath: "/home/xch/private_wallet.crt",
-      keyPath: "/home/xch/private_wallet.key",
     });
     const transaction = await wallet.sendTransaction(userDto.id, userDto.amount, userDto.address, userDto.fee)
     return transaction
+  }
+
+  
+  /**
+   * 获取所有钱包列表及信息（XCH）
+   */
+   async get_XCH_Wallets(userDto: UserDto): Promise<WalletInfo[]>{
+    const wallet = new Wallet({
+    });
+    const wallets = await wallet.getWallets()
+    return wallets
+  }
+
+  /**
+   * 获取交易记录（XCH）
+   */
+   async get_XCH_Transactions(userDto: UserDto): Promise<Transaction[]>{
+    const wallet = new Wallet({
+    });
+    const transactions = await wallet.getTransactions(userDto.id)
+    return transactions
   }
 
   /**

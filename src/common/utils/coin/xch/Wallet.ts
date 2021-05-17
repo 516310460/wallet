@@ -139,6 +139,7 @@ class Wallet extends RpcClient {
     return this.request<{}>("farm_block", { address });
   }
 
+  // 获取所有钱包列表信息
   public async getWallets(): Promise<WalletInfo[]> {
     const { wallets } = await this.request<WalletsResponse>("get_wallets", {});
 
@@ -171,7 +172,7 @@ class Wallet extends RpcClient {
     return transaction;
   }
 
-  // 获取交易多笔
+  // 获取交易记录
   public async getTransactions(walletId: string): Promise<Transaction[]> {
     const { transactions } = await this.request<TransactionsResponse>(
       "get_transactions",
