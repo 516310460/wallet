@@ -17,7 +17,7 @@ export class AccountController {
   @ApiOperation({ summary: '获取余额（XCH）' })
   @ApiQuery({
     name: 'id',
-    description: '钱包id',
+    description: '钱包id（wallet_id）',
   })
   @ApiCreatedResponse({ //编写响应的api注解
     status:200,
