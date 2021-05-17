@@ -20,6 +20,7 @@ export class AccountService {
       keyPath: "/home/xch/private_wallet.key",
     });
     const Balance = await wallet.getWalletBalance(userDto.id)
+    console.log(Balance)
     return Balance
   }
 
