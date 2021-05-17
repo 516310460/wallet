@@ -4,5 +4,5 @@ export interface UserDto {
   key: string;
 
   // 是否创建地址
-  isCreateAddress: boolean;
+  isCreateAddress: number;
 }

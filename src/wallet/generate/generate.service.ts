@@ -54,7 +54,7 @@ export class GenerateService {
       // keyPath: "/home/xch/private_wallet.key",
     });
     
-    const address = await wallet.getNextAddress(userDto.id, userDto.isCreateAddress)
+    const address = await wallet.getNextAddress(userDto.id, userDto.isCreateAddress == 0 ? false : true)
     // const getWallets = await wallet.getWallets()
     // console.log(address)
     // console.log(getWallets)

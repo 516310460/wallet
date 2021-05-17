@@ -56,7 +56,7 @@ export class GenerateController {
   })
   @ApiQuery({
     name: 'isCreateAddress',
-    description: '是否创建地址',
+    description: '是否创建地址(0.为不新建 1.为新建)',
   })
   // @ApiQuery({
   //   name: 'crt',
