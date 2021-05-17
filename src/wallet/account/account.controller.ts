@@ -13,6 +13,30 @@ import { VerifyAddress } from "src/common/utils/verify/address.verify";
 export class AccountController {
   constructor(private readonly account: AccountService) {}
 
+  @Post("/getXCHBalance")
+  @ApiOperation({ summary: '获取余额（XCH）' })
+  // @ApiQuery({
+  //   name: 'id',
+  //   description: '钱包id',
+  // })
+  // @ApiQuery({
+  //   name: 'crt',
+  //   description: '全节点 private_full_node.crt',
+  // })
+  // @ApiQuery({
+  //   name: 'key',
+  //   description: '全节点 private_full_node.key',
+  // })
+  @ApiCreatedResponse({ //编写响应的api注解
+    status:200,
+    description: '响应数据格式',
+    type: Account,
+  })
+  async getXCHBalance(@Body() userDto: UserDto, @Res() res: Response) {
+    let AllAccount = await this.account.getXCHBalance(userDto)
+    res.status(HttpStatus.OK).json(AllAccount);
+  }
+
   @Get()
   @ApiOperation({ summary: '获取余额' })
   @ApiQuery({

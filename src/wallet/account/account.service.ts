@@ -2,12 +2,26 @@ import { Injectable } from '@nestjs/common';
 import { UserDto } from './dto/create-account.dto'
 import { Account, verificationAssress } from './swaggerModel/account.model';
 import { WalletUtil } from '../../common/utils/wallet.util'
+import { Wallet } from '../../common/utils/coin/xch/Wallet';
+import { WalletBalance } from 'src/common/utils/coin/xch/types/Wallet/WalletBalance';
 const TronWeb = require('tronweb')
 
 @Injectable()
 export class AccountService {
   constructor(private readonly walletUtil: WalletUtil) {}
   // private readonly generates: GenerateAddress[] = [];
+
+  /**
+   * 获取币种余额（XCH）
+   */
+  async getXCHBalance(userDto: UserDto): Promise<WalletBalance>{
+    const wallet = new Wallet({
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
+    });
+    const Balance = await wallet.getWalletBalance(userDto.id)
+    return Balance
+  }
 
   /**
    * 获取币种余额
