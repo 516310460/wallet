@@ -121,6 +121,10 @@ export class AccountController {
   
   @Get("/get_XCH_Transactions")
   @ApiOperation({ summary: '获取交易记录（XCH）' })
+  @ApiQuery({
+    name: 'id',
+    description: '钱包id（wallet_id）',
+  })
   async get_XCH_Transactions(@Query() userDto: UserDto, @Res() res: Response) {
     let AllAccount = await this.account.get_XCH_Transactions(userDto)
     res.status(HttpStatus.OK).json(AllAccount);
