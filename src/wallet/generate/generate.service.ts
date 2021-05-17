@@ -36,16 +36,24 @@ export class GenerateService {
     ]
   }
 
-  async getXCHAccount(userDto: UserDto){
+  async getXCHgenerateMnemonic(userDto: UserDto){
     const wallet = new Wallet({
       certPath: "/home/xch/private_wallet.crt",
       keyPath: "/home/xch/private_wallet.key",
     });
 
     const generateMnemonic = await wallet.generateMnemonic()
-    console.log("助记词地址生成", generateMnemonic)
     wallet.addKey(generateMnemonic)
-    console.log("添加助记词成功")
+  
+    return generateMnemonic
+  }
+
+  async getXCHAccount(userDto: UserDto){
+    const wallet = new Wallet({
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
+    });
+    
     const address = await wallet.getNextAddress(userDto.id)
     const getWallets = await wallet.getWallets()
     console.log(address)

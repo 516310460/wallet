@@ -36,6 +36,18 @@ export class GenerateController {
     res.status(HttpStatus.OK).json(AllAccount);
   }
 
+  @Get("/getXCHgenerateMnemonic")
+  @ApiOperation({ summary: '生成助记词（XCH）' })
+  @ApiCreatedResponse({ //编写响应的api注解
+    status:200,
+    description: '响应数据格式',
+    type: Address,
+  })
+  async getXCHgenerateMnemonic(@Query() userDto: UserDto, @Res() res: Response) {
+    let AllAccount = await this.generate.getXCHgenerateMnemonic(userDto)
+    res.status(HttpStatus.OK).json(AllAccount);
+  }
+
   @Post("/getXCHAddress")
   @ApiOperation({ summary: '生成/获取地址（XCH）' })
   @ApiQuery({
