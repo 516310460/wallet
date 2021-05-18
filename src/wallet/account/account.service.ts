@@ -21,8 +21,8 @@ export class AccountService {
    */
   async getXCHBalance(userDto: UserDto): Promise<WalletBalance>{
     const wallet = new Wallet({
-      // certPath: "/home/xch/private_wallet.crt",
-      // keyPath: "/home/xch/private_wallet.key",
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
     });
     const Balance = await wallet.getWalletBalance(userDto.id)
     console.log(Balance)
@@ -34,6 +34,8 @@ export class AccountService {
    */
    async send_XCH_transaction(userDto: UserDto): Promise<Transaction>{
     const wallet = new Wallet({
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
     });
     const transaction = await wallet.sendTransaction(userDto.id, userDto.amount, userDto.address, userDto.fee)
     return transaction
@@ -45,6 +47,8 @@ export class AccountService {
    */
    async get_XCH_Wallets(userDto: UserDto): Promise<WalletInfo[]>{
     const wallet = new Wallet({
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
     });
     const wallets = await wallet.getWallets()
     return wallets
@@ -55,6 +59,8 @@ export class AccountService {
    */
    async get_XCH_Transactions(userDto: UserDto): Promise<Transaction[]>{
     const wallet = new Wallet({
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
     });
     const transactions = await wallet.getTransactions(userDto.id)
     return transactions
@@ -65,6 +71,8 @@ export class AccountService {
    */
    async get_XCH_blockchain_state(userDto: UserDto): Promise<BlockchainStateResponse>{
     const fullNode = new FullNode({
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
     });
     const blockchain = await fullNode.getBlockchainState();
     return blockchain

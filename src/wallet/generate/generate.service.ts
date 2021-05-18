@@ -50,17 +50,11 @@ export class GenerateService {
 
   async getXCHAccount(userDto: UserDto): Promise<string>{
     const wallet = new Wallet({
-      // certPath: "/home/xch/private_wallet.crt",
-      // keyPath: "/home/xch/private_wallet.key",
+      certPath: "/home/xch/private_wallet.crt",
+      keyPath: "/home/xch/private_wallet.key",
     });
     
     const address = await wallet.getNextAddress(userDto.id, userDto.isCreateAddress == 0 ? false : true)
-    // const getWallets = await wallet.getWallets()
-    // console.log(address)
-    // console.log(getWallets)
-    // const x = await wallet.getHeightInfo();
-    // console.log('wallet height', x);
-  
     return address
   }
 
