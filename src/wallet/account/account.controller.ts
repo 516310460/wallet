@@ -130,4 +130,11 @@ export class AccountController {
     res.status(HttpStatus.OK).json(AllAccount);
   }
 
+  @Get("/get_XCH_blockchain_state")
+  @ApiOperation({ summary: '获取区块信息（XCH）' })
+  async get_XCH_blockchain_state(@Query() userDto: UserDto, @Res() res: Response) {
+    let AllAccount = await this.account.get_XCH_blockchain_state(userDto)
+    res.status(HttpStatus.OK).json(AllAccount);
+  }
+
 }

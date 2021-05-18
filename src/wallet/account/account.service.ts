@@ -2,10 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { UserDto } from './dto/create-account.dto'
 import { Account, verificationAssress } from './swaggerModel/account.model';
 import { WalletUtil } from '../../common/utils/wallet.util'
+import { FullNode } from '../../common/utils/coin/xch/FullNode';
 import { Wallet } from '../../common/utils/coin/xch/Wallet';
 import { WalletBalance } from 'src/common/utils/coin/xch/types/Wallet/WalletBalance';
 import { Transaction } from 'src/common/utils/coin/xch/types/Wallet/Transaction';
 import { WalletInfo } from 'src/common/utils/coin/xch/types/Wallet/WalletInfo';
+import { BlockchainState } from 'src/common/utils/coin/xch/types/FullNode/BlockchainState';
+import { BlockchainStateResponse } from 'src/common/utils/coin/xch/types/FullNode/RpcResponse';
 const TronWeb = require('tronweb')
 
 @Injectable()
@@ -55,6 +58,16 @@ export class AccountService {
     });
     const transactions = await wallet.getTransactions(userDto.id)
     return transactions
+  }
+
+  /**
+   * 获取区块信息（XCH）
+   */
+   async get_XCH_blockchain_state(userDto: UserDto): Promise<BlockchainStateResponse>{
+    const fullNode = new FullNode({
+    });
+    const blockchain = await fullNode.getBlockchainState();
+    return blockchain
   }
 
   /**
